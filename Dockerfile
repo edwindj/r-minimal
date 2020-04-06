@@ -1,5 +1,5 @@
 
-FROM alpine:3.10.3
+FROM alpine:3.11.5
 
 MAINTAINER "r-hub admin" admin@r-hub.io
 
@@ -48,5 +48,8 @@ RUN touch /usr/local/lib/R/doc/html/R.css
 
 COPY remotes.R /usr/local/bin/
 COPY installr /usr/local/bin/
+
+RUN installr -d -a "gdal-dev proj-dev" rgdal
+RUN installr -d sf
 
 CMD ["R"]
